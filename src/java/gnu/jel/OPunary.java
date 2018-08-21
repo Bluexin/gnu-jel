@@ -168,15 +168,15 @@ public class OPunary extends OP {
     // error (object -> primitive, primitive->object)
 
     code=4+resID;
-    if ((resID>=8) && (resID!=10) && (currID!=10) && 
+    if ((resID>=8) && (resID!=10) && (currID!=10) &&
         (!((currID==28) && ((resID==10) || (resID==11))))) {
       // here we have the following cases:
       // 6) primitive (or unwrappable to primitive) to wrapper object
       // 8) general object to object
       boolean boxToSuperclass= 
-        ((targetClass == java.lang.Number.class) && 
+        ((targetClass == Number.class) &&
          (unwrappedCurrID!=0) && (unwrappedCurrID!=2)) ||
-        (targetClass == java.lang.Object.class); // box to Number or Object
+        (targetClass == Object.class); // box to Number or Object
       if ((unwrappedCurrID<8) && (((resID>=20) && (resID<=27)) || boxToSuperclass)) {
         // 6) primitive (or unwrappable to primitive) to wrapper object (boxing)
         // 7) primitive (or onwrappable to primitive) of numeric type into java.lang.Number

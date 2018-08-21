@@ -864,7 +864,7 @@ public class ClassFile implements Cloneable {
       try {
         constPool.write(1);            // CONSTANT_Utf8 = 1;
         constPool.writeUTF(str);
-      } catch (java.io.IOException e) {
+      } catch (IOException e) {
         if (Debug.enabled) Debug.reportThrowable(e);
       };
       UTFs.put(str,index);
@@ -976,7 +976,7 @@ public class ClassFile implements Cloneable {
                           item.getClass().getName()+
                           "\" to the constant pool.");
         };
-      } catch (java.io.IOException e) {
+      } catch (IOException e) {
         if (Debug.enabled) Debug.reportThrowable(e);
       };
       index=new Integer(newIndex);
@@ -988,7 +988,7 @@ public class ClassFile implements Cloneable {
   // writes out full reference to method, interface or field
   // this includes UTFs, Name&Type and XXX_ref entries
   private int writeMemberRef(Member member, int entry) 
-    throws java.io.IOException {
+    throws IOException {
     if (Debug.enabled)
       Debug.check((entry==10)||(entry==9)||(entry==11));
     //  CONSTANT_Fieldref = 9;  CONSTANT_Methodref = 10; 

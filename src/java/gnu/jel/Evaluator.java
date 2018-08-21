@@ -23,7 +23,6 @@ package gnu.jel;
 //import gnu.jel.generated.EC;
 //import gnu.jel.generated.CharStream;
 import gnu.jel.debug.Debug;
-import java.lang.reflect.Member;
 
 /**
  * This is the main frontend to JEL.
@@ -62,8 +61,8 @@ import java.lang.reflect.Member;
  *
  * <P>(c) 1998-2003, by Konstantin Metlov<BR>
  * Prague, CZ
- * @see gnu.jel.CompiledExpression
- * @see gnu.jel.Library
+ * @see CompiledExpression
+ * @see Library
  */
 public class Evaluator {
 
@@ -90,7 +89,7 @@ public class Evaluator {
         eval_methods[i]=new LocalMethod(0x0001,cls,name,paramsE,excptnsE);
       };
       
-      Class<?> cmplExpr=Class.forName("gnu.jel.CompiledExpression");
+      Class<?> cmplExpr = CompiledExpression.class;
       ClassFile cf=new ClassFile(0x0001,"dump",cmplExpr,null,null);
       // public 
       LocalMethod cnstr=
@@ -146,9 +145,9 @@ public class Evaluator {
    *        be null, in this case the result type is not fixed.
    * @return Instance of the CompiledExpression subclass, implementing
    *   the specified expression evaluation.
-   * @exception gnu.jel.CompilationException if the expression is not
+   * @exception CompilationException if the expression is not
    *  syntactically or semantically correct.
-   * @see gnu.jel.CompiledExpression
+   * @see CompiledExpression
    */
   public static CompiledExpression compile(String expression, Library lib,
                                            Class<?> resultType) 
@@ -158,7 +157,7 @@ public class Evaluator {
       return (CompiledExpression)(ImageLoader.load(image)).newInstance();
     } catch (Exception exc) {
       if (Debug.enabled)
-        Debug.reportThrowable(exc);
+        Debug.reportThrowable(exc, "Unable to compile expression \'" + expression + "\'\nWith resultType: " + (resultType == null? null: resultType.getCanonicalName()));
       return null;
     }
   };
@@ -175,10 +174,10 @@ public class Evaluator {
    * in a standard Java classfile format. It can be conveniently 
    * loaded (with renaming, if necessary)
    * into Java VM using <tt>gnu.jel.ImageLoader</tt>.
-   * @exception gnu.jel.CompilationException if the expression is not
+   * @exception CompilationException if the expression is not
    *  syntactically or semantically correct.
-   * @see gnu.jel.CompiledExpression
-   * @see gnu.jel.ImageLoader
+   * @see CompiledExpression
+   * @see ImageLoader
    */
   public static byte[] compileBits(String expression, Library lib,
                                    Class<?> resultType) 
@@ -200,9 +199,9 @@ public class Evaluator {
    * @param lib Library of functions exported for use in expression.
    * @return Instance of the CompiledExpression subclass, implementing
    *   the specified expression evaluation.
-   * @exception gnu.jel.CompilationException if the expression is not
+   * @exception CompilationException if the expression is not
    *  syntactically or semantically correct.
-   * @see gnu.jel.CompiledExpression
+   * @see CompiledExpression
    */
   public static CompiledExpression compile(String expression, Library lib)
     throws CompilationException {
@@ -219,10 +218,10 @@ public class Evaluator {
    * in a standard Java classfile format. It can be conveniently 
    * loaded (with renaming, if necessary)
    * into Java VM using <tt>gnu.jel.ImageLoader</tt>.
-   * @exception gnu.jel.CompilationException if the expression is not
+   * @exception CompilationException if the expression is not
    *  syntactically or semantically correct.
-   * @see gnu.jel.CompiledExpression
-   * @see gnu.jel.ImageLoader
+   * @see CompiledExpression
+   * @see ImageLoader
    */
   public static byte[] compileBits(String expression, Library lib)
     throws CompilationException {

@@ -115,15 +115,15 @@ public abstract class OP {
    * @return id of the corresponding primitive type.
    */
   public static final int typeIDObject(Object o) {
-    if (o instanceof java.lang.Boolean) return 0;
-    if (o instanceof java.lang.Byte) return 1;
-    if (o instanceof java.lang.Character) return 2;
-    if (o instanceof java.lang.Short) return 3;
-    if (o instanceof java.lang.Integer) return 4;
-    if (o instanceof java.lang.Long) return 5;
-    if (o instanceof java.lang.Float) return 6;
-    if (o instanceof java.lang.Double) return 7;
-    if (o instanceof java.lang.String) return 11;
+    if (o instanceof Boolean) return 0;
+    if (o instanceof Byte) return 1;
+    if (o instanceof Character) return 2;
+    if (o instanceof Short) return 3;
+    if (o instanceof Integer) return 4;
+    if (o instanceof Long) return 5;
+    if (o instanceof Float) return 6;
+    if (o instanceof Double) return 7;
+    if (o instanceof String) return 11;
     return 8;
   };
 
@@ -143,10 +143,10 @@ public abstract class OP {
    *         automatically)
    */
   public static boolean isWidening(int id1, Class<?> c1, int id2, Class<?> c2) {
-    if (c2 == java.lang.Object.class)
+    if (c2 == Object.class)
       return true; // everything (including the primitives) is convertible to Object
     
-    if (c2 == java.lang.Number.class) {
+    if (c2 == Number.class) {
       id1=unwrapType[id1];
       return (id1<8) && (id1!=0) && (id1!=2); // convertible to Number
     }

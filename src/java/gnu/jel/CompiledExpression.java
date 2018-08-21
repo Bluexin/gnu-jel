@@ -78,8 +78,8 @@ import gnu.jel.debug.Debug;
  * <P> There is a possibility to enforce resulting type of the expression at
  * compile time (see <tt>gnu.jel.Evaluator</tt>). 
  * Use it to avoid unnecesary type checks.
- * @see gnu.jel.Library
- * @see gnu.jel.Evaluator
+ * @see Library
+ * @see Evaluator
  */
 public abstract class CompiledExpression {
   
@@ -147,8 +147,8 @@ public abstract class CompiledExpression {
    * @return the result fo computation.
    * @exception Throwable if any runtime error have occured (i.e. division
    *          by 0)
-   * @see gnu.jel.Evaluator#compile
-   * @see gnu.jel.Library
+   * @see Evaluator#compile
+   * @see Library
    */
   public Object evaluate(Object[] dl) throws Throwable {
     int type=getType();
@@ -180,8 +180,8 @@ public abstract class CompiledExpression {
    * @return the result fo computation.
    * @exception Throwable if any runtime error have occured (i.e. division
    *          by 0)
-   * @see gnu.jel.Evaluator#compile
-   * @see gnu.jel.Library
+   * @see Evaluator#compile
+   * @see Library
    */
   public boolean evaluate_boolean(Object[] dl) throws Throwable {
     if (Debug.enabled)
@@ -199,8 +199,8 @@ public abstract class CompiledExpression {
    * @return the result fo computation.
    * @exception Throwable if any runtime error have occured (i.e. division
    *          by 0)
-   * @see gnu.jel.Evaluator#compile
-   * @see gnu.jel.Library
+   * @see Evaluator#compile
+   * @see Library
    */
   public byte evaluate_byte(Object[] dl) throws Throwable {
     if (Debug.enabled)
@@ -218,8 +218,8 @@ public abstract class CompiledExpression {
    * @return the result fo computation.
    * @exception Throwable if any runtime error have occured (i.e. division
    *          by 0)
-   * @see gnu.jel.Evaluator#compile
-   * @see gnu.jel.Library
+   * @see Evaluator#compile
+   * @see Library
    */
   public short evaluate_short(Object[] dl) throws Throwable {
     if (Debug.enabled)
@@ -237,8 +237,8 @@ public abstract class CompiledExpression {
    * @return the result fo computation.
    * @exception Throwable if any runtime error have occured (i.e. division
    *          by 0)
-   * @see gnu.jel.Evaluator#compile
-   * @see gnu.jel.Library
+   * @see Evaluator#compile
+   * @see Library
    */
   public char evaluate_char(Object[] dl) throws Throwable {
     if (Debug.enabled)
@@ -256,8 +256,8 @@ public abstract class CompiledExpression {
    * @return the result fo computation.
    * @exception Throwable if any runtime error have occured (i.e. division
    *          by 0)
-   * @see gnu.jel.Evaluator#compile
-   * @see gnu.jel.Library
+   * @see Evaluator#compile
+   * @see Library
    */
   public int evaluate_int(Object[] dl) throws Throwable {
     if (Debug.enabled)
@@ -275,8 +275,8 @@ public abstract class CompiledExpression {
    * @return the result fo computation.
    * @exception Throwable if any runtime error have occured (i.e. division
    *          by 0)
-   * @see gnu.jel.Evaluator#compile
-   * @see gnu.jel.Library
+   * @see Evaluator#compile
+   * @see Library
    */
   public long evaluate_long(Object[] dl) throws Throwable {
     if (Debug.enabled)
@@ -294,8 +294,8 @@ public abstract class CompiledExpression {
    * @return the result fo computation.
    * @exception Throwable if any runtime error have occured (i.e. division
    *          by 0)
-   * @see gnu.jel.Evaluator#compile
-   * @see gnu.jel.Library
+   * @see Evaluator#compile
+   * @see Library
    */
   public float evaluate_float(Object[] dl) throws Throwable {
     if (Debug.enabled)
@@ -313,8 +313,8 @@ public abstract class CompiledExpression {
    * @return the result fo computation.
    * @exception Throwable if any runtime error have occured (i.e. division
    *          by 0)
-   * @see gnu.jel.Evaluator#compile
-   * @see gnu.jel.Library
+   * @see Evaluator#compile
+   * @see Library
    */
   public double evaluate_double(Object[] dl) throws Throwable {
     if (Debug.enabled)
@@ -331,8 +331,8 @@ public abstract class CompiledExpression {
    *  library. See description of this class above for more details.
    * @exception Throwable if any runtime error have occured (i.e. division
    *          by 0)
-   * @see gnu.jel.Evaluator#compile
-   * @see gnu.jel.Library
+   * @see Evaluator#compile
+   * @see Library
    */
   public void evaluate_void(Object[] dl) throws Throwable {
     if (Debug.enabled)

@@ -28,7 +28,7 @@ import java.lang.reflect.Member;
  */
 public class LocalField implements Member {
   private int modifiers;
-  private java.lang.String name;
+  private String name;
   private Class<?> type;
   private Object constValue;
 
@@ -43,7 +43,7 @@ public class LocalField implements Member {
    * @param constValue is the value of this field if it is static final,
    *                   <TT>null</TT> otherwise.
    */
-  public LocalField(int modifiers, Class<?> type, java.lang.String name, Object constValue){
+  public LocalField(int modifiers, Class<?> type, String name, Object constValue){
     if (Debug.enabled)
       Debug.check((constValue==null) || ((modifiers & 0x0018) ==0x0018));
 
@@ -57,7 +57,7 @@ public class LocalField implements Member {
   	return null; // means local field
   };
 
-  public java.lang.String getName() {
+  public String getName() {
 	return name;
   };
 

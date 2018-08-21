@@ -41,7 +41,7 @@ public class LocalMethod extends LocalField {
    *                   (null means no parameters).
    * @param exceptions checked exceptions thrown
    */
-  public LocalMethod(int modifiers, Class<?> type, java.lang.String name, 
+  public LocalMethod(int modifiers, Class<?> type, String name,
                      Class<?>[] paramTypes,Class<?>[] exceptions) {
 	super(modifiers,type,name,null);
 

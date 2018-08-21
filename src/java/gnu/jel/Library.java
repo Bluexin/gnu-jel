@@ -448,7 +448,7 @@ public class Library {
     if (m instanceof LocalField) return ((LocalField)m).getType();
     // otherwise it must be java.lang.reflect.Constructor
     if (Debug.enabled)
-      Debug.check(m instanceof java.lang.reflect.Constructor);
+      Debug.check(m instanceof Constructor);
     return OP.specialTypes[9]; // java.lang.reflect.Void.TYPE
   };
 

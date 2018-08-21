@@ -130,7 +130,7 @@ public class ImageLoader extends ClassLoader {
 //    };
 
   protected Class<?> loadClass(String name, boolean resolve) throws
-  java.lang.ClassNotFoundException  {
+  ClassNotFoundException  {
     if (!name.equals(this.name)) {
       if (parent!=null) 
         return parent.loadClass(name);
