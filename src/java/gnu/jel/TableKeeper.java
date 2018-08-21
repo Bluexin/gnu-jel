@@ -39,11 +39,11 @@ public class TableKeeper {
       Class<?> c = DVMap.class;
       // Read messages
       resB=
-              new PropertyResourceBundle(c.getResourceAsStream("JEL.properties"));
+              new PropertyResourceBundle(c.getResourceAsStream("/gnu/jel/JEL.properties"));
 
       // Read tables
       ObjectInputStream ios=
-              new ObjectInputStream(c.getResourceAsStream("tables.dat"));
+              new ObjectInputStream(c.getResourceAsStream("/gnu/jel/tables.dat"));
       @SuppressWarnings("unchecked")
       Hashtable<String,Object> temp1=(Hashtable<String,Object>)ios.readObject();
       temp=temp1;
