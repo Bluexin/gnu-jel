@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gnu-jel.iml" filepath="$PROJECT_DIR$/.idea/gnu-jel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gnu-jel.iml" filepath="$PROJECT_DIR$/gnu-jel.iml" />
     </modules>
   </component>
 </project>

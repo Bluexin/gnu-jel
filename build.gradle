@@ -1,0 +1,94 @@
+import org.apache.tools.ant.Target
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'idea'
+}
+
+ant.importBuild('build.xml') {
+    'a_' + it
+}
+
+ant.'jel.version' = jel_version
+
+build.dependsOn a_dist
+javadoc.dependsOn a_javadoc
+clean.dependsOn a_clean
+
+group = 'be.bluexin.gnu.jel'
+version = ant.'jel.version'
+buildDir = file(ant.'dist.dir'.toString())
+
+dependencies {
+    testCompile files(ant.'junit.jar')
+}
+
+sourceSets {
+    main {
+        String[] paths = ant.antProject.targets['java-compile'].tasks[0].runtimeConfigurableWrapper
+                .children.toSet().findAll { ("src" == it.proxy.tag) }.attributeMap['path']
+        java {
+            srcDirs += paths[1]
+        }
+        java {
+            srcDirs += paths[0]
+            exclude 'gnu/jel/debug/**'
+        }
+    }
+    test {
+        java {
+            srcDirs = [ant.antProject.targets['test-compile'].tasks[0].runtimeConfigurableWrapper.attributeMap['srcdir']]
+        }
+    }
+}
+
+def getJar(int taskId) {
+    Target distTarget = a_dist.target
+    return file(distTarget.tasks[taskId].runtimeConfigurableWrapper.attributeMap["destfile"].toString().replace('${dist.dir}', buildDir.toString()))
+}
+
+def releaseJar = artifacts.add('archives', getJar(0)) {
+    builtBy a_dist
+}
+
+def debugJar = artifacts.add('archives', getJar(2)) {
+    classifier = 'debug'
+    builtBy a_dist
+}
+
+task sourcesJar(type: Jar, dependsOn: a_dist) {
+    classifier = 'sources'
+    from 'build/dist/source/src/java'
+}
+
+task javadocJar(type: Jar, dependsOn: a_javadoc) {
+    classifier = 'javadoc'
+    from 'build/dist/docs'
+}
+
+publishing {
+    publications {
+        jel(MavenPublication) {
+            artifact releaseJar
+            artifact debugJar
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
+
+    repositories {
+        def remote = System.getenv('REPO_PWD') != null
+        maven {
+            def remoteURL = 'https://maven.bluexin.be/repository/releases'
+            def localURL = "file://${buildDir}/repo"
+            url = remote? remoteURL: localURL
+            if (remote) {
+                credentials(PasswordCredentials) {
+                    username = 'CI'
+                    password = System.getenv('REPO_PWD')
+                }
+            }
+        }
+    }
+}
