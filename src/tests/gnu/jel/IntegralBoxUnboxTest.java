@@ -12,8 +12,6 @@
 package gnu.jel;
 
 import gnu.jel.tests.*;
-import java.io.PrintStream;
-import java.util.Stack;
 
 public class IntegralBoxUnboxTest extends TestingUtils {
   public IntegralBoxUnboxTest(String name) {

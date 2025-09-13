@@ -21,7 +21,7 @@
 // This class is both used to resolve the dynamic variable names and
 // to provide their values. These two functions can also be
 // implemented by two different classes.
-public class DVResolverProvider extends gnu.jel.DVMap {
+public class DVResolverProvider extends jel.DVMap {
 
     private java.util.HashMap<String,Object> properties=
 	new java.util.HashMap<String,Object>();

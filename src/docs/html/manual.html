@@ -196,7 +196,7 @@
   </pre>
         <p>
             This piece of code establishes the namespace for use in JEL compiled
-            expressions. The <code class="classname">gnu.jel.Library</code> object
+            expressions. The <code class="classname">jel.Library</code> object
             maintains this namespace.</p>
         <p>There can be two types of names in the Library :
             <span class="emphasis"><em>static</em></span> and
@@ -217,7 +217,7 @@
             objects, defining those functions, as the first parameter of the
             library constructor (see example above). Note ONLY STATIC functions
             of the Classes, passed in the first argument of the
-            <code class="classname">gnu.jel.Library</code> constructor will be defined
+            <code class="classname">jel.Library</code> constructor will be defined
             in the namespace. By default all static functions are considered
             "stateless" by JEL.</p>
         <p>However, some static functions still save their state (in
@@ -228,7 +228,7 @@
             once during expression lifetime and it's state dependence will be
             lost. Typical example of the static function, having a state is
             <code class="function">java.lang.Math.random</code>. JEL has special
-            mechanism, provided by <code class="classname">gnu.jel.Library</code> class
+            mechanism, provided by <code class="classname">jel.Library</code> class
             to mark static functions as state dependent. (see the above example
             to find out how it was done for the
             <code class="function">java.lang.Math.random</code>)</p>
@@ -262,7 +262,7 @@
             point, where expression gets transformed into Java bytecode,
             loaded into the Java Virtual Machine using JEL ClassLoader and
             returned to caller as an instance of the subclass of
-            <code class="classname">gnu.jel.CompiledExpression</code>.
+            <code class="classname">jel.CompiledExpression</code>.
             Typical user of JEL is not
             required to know what magic is going on inside of
             <code class="function">Evaluator.compile(...)</code>.
@@ -287,7 +287,7 @@
             This code does the evaluation of the expression. It is done by
             calling the <code class="function">evaluate</code> method of the JEL
             compiled class, it is defined abstract in
-            <code class="classname">gnu.jel.CompiledExpression</code> but is
+            <code class="classname">jel.CompiledExpression</code> but is
             redefined in the class compiled by JEL. The argument of this method
             is discussed in the section on virtual functions below. If only
             static functions are present in the library it is safe to pass the
@@ -311,7 +311,7 @@
             compiler. It is required as errors can appear during evaluation. The
             general rule is: <span class="emphasis"><em>syntax, types incompatibility and function
   resolution errors will be reported at compile time (as thrown
-  instance of <code class="classname">gnu.jel.CompilationException</code>),
+  instance of <code class="classname">jel.CompilationException</code>),
   while the errors in the
   values of numbers will be reported at the execution
   time</em></span>. For example expression "1/0" will generate no error
@@ -349,7 +349,7 @@
             </dl>
         </div>
         <p>The namespace of JEL expressions is represented by
-            <code class="classname">gnu.jel.Library</code> class. Its constructor:
+            <code class="classname">jel.Library</code> class. Its constructor:
         </p>
         <pre class="programlisting">Library(Class[] staticLib, Class[] dynamicLib,
 Class[] dotClasses, DVMap  resolver,
@@ -463,7 +463,7 @@ Hashtable cnmap)</pre>
                 <em class="parameter"><code>dynamicLib</code></em> array are supplied at the
                 execution time to the argument of the
                 <code class="function">evaluate(Object[] context)</code> method of
-                <code class="classname">gnu.jel.CompiledExpression</code>.
+                <code class="classname">jel.CompiledExpression</code>.
                 The elements of the <em class="parameter"><code>context</code></em> array
                 should be instances of classes listed in <em class="parameter"><code>dynamicLib</code></em>
                 array at compile time and there should be one-to-one correspondence between
@@ -598,7 +598,7 @@ Hashtable cnmap)</pre>
                         objects.</h2></div>
                 </div>
             </div>
-            <p>The third argument of <code class="classname">gnu.jel.Library</code>
+            <p>The third argument of <code class="classname">jel.Library</code>
                 constructor enumerates classes which are available for dot operator
                 within the expression. If this parameter is <code class="constant">null</code>
                 JEL would not allow to use the dot operator at all. If it is an array
@@ -650,8 +650,8 @@ Hashtable cnmap)</pre>
                 these problems. To do that the fourth argument
                 (<em class="parameter"><code>resolver</code></em>) of the library constructor is
                 used. This argument supplies the reference to the subclass of
-                <code class="classname">gnu.jel.DVMap</code>, and is used by JEL to resolve
-                the dynamic variable names. The <code class="classname">gnu.jel.DVMap</code>
+                <code class="classname">jel.DVMap</code>, and is used by JEL to resolve
+                the dynamic variable names. The <code class="classname">jel.DVMap</code>
                 has an abstract method
             </p>
             <pre class="programlisting">public String getTypeName(String  name)</pre>
@@ -756,7 +756,7 @@ resolver.getTypeName("x.f2")=="Double"</pre>
                 </div>
             </div>
             <p>The <em class="parameter"><code>cnmap</code></em> argument of
-                <code class="classname">gnu.jel.Library</code> constructor,
+                <code class="classname">jel.Library</code> constructor,
                 allows to enable the non-primitive type casts in JEL compiled
                 expressions. If <code class="constant">cnmap!=null</code> it must be
                 <code class="classname">java.util.Hashtable</code> with
@@ -793,7 +793,7 @@ resolver.getTypeName("x.f2")=="Double"</pre>
             <code class="varname">w</code> has type <code class="classname">Weight</code>.</p>
         <p>To save typing (since version 0.9.3 of JEL) one may have the class
             <code class="classname">Weight</code> implement
-            <code class="classname">gnu.jel.reflect.Double</code> interface. Then,
+            <code class="classname">jel.reflect.Double</code> interface. Then,
             the aforementioned getValue method will be called automatically by JEL
             (or object <code class="varname">w</code> will be "unwrapped" to
             primitive type). This
@@ -803,17 +803,17 @@ resolver.getTypeName("x.f2")=="Double"</pre>
             <strong class="userinput"><code>"w.getUnits()"</code></strong> both
             valid (in the second case <code class="varname">w</code>
             is not "unwrapped"). </p>
-        <p>There are <code class="classname">gnu.jel.reflect.*</code> interfaces
+        <p>There are <code class="classname">jel.reflect.*</code> interfaces
             for all Java primitive types. To use the automatic unwrapping one
             just needs to make his classes to implement one of these interfaces.</p>
         <p>There is a similar mechanism for strings (since version 0.9.6)
             and a corresponding empty interface
-            <code class="classname">gnu.jel.reflect.String</code>
+            <code class="classname">jel.reflect.String</code>
             to denote objects automatically convertible to
             <code class="classname">java.lang.String</code> by means of their
             <code class="function">.toString()</code> method. For
             example, if <code class="varname">x</code> is of a class implementing
-            <code class="classname">gnu.jel.reflect.String</code> interface the expression
+            <code class="classname">jel.reflect.String</code> interface the expression
             <strong class="userinput"><code>x+"a"</code></strong> will be compiled into
             <strong class="userinput"><code>x.toString()+"a"</code></strong> (otherwise this expression
             produces a error message). The objects automatically convertible to
@@ -836,13 +836,13 @@ resolver.getTypeName("x.f2")=="Double"</pre>
             that.</p>
         <p>There are two places, where errors can appear. First are the
             compilation errors, which are thrown in the form of
-            <code class="classname">gnu.jel.CompilationException</code> by the
-            <code class="function">gnu.jel.Evaluator.compile</code>. These errors signal about
+            <code class="classname">jel.CompilationException</code> by the
+            <code class="function">jel.Evaluator.compile</code>. These errors signal about
             syntax problems in the entered expressions, wrong function names,
             illegal <span class="emphasis"><em>types</em></span> combinations, but NOT about illegal
             values of arguments of functions. The second source of errors is the
             compiled code itself, Throwables, thrown out of
-            <code class="function">gnu.jel.CompiledExpression.evaluate</code> are primarily due to
+            <code class="function">jel.CompiledExpression.evaluate</code> are primarily due to
             the invalid <span class="emphasis"><em>values</em></span> of function arguments.</p>
         <p>Compilation errors are easy to process. Normally, you should
             surround compilation by the
@@ -853,7 +853,7 @@ resolver.getTypeName("x.f2")=="Double"</pre>
       // ... process and report the error
    }</pre>
         <p>
-            block. Caught <code class="classname">gnu.jel.CompilationException</code> can be
+            block. Caught <code class="classname">jel.CompilationException</code> can be
             interrogated, then, on the subject of WHERE error has occurred
             (<code class="function">getCol</code>) and WHAT was the
             error (<code class="function">getMessage</code>). This
@@ -882,7 +882,7 @@ resolver.getTypeName("x.f2")=="Double"</pre>
             retrieve it without creation of the object. This can be done (since
             the version 0.2 of JEL) with <code class="function">evaluateXX()</code>
             family of calls (see
-            <code class="classname">gnu.jel.CompiledExpression</code>. There is an
+            <code class="classname">jel.CompiledExpression</code>. There is an
             <code class="function">evaluateXX()</code> method for each Java primitive
             type, if you know what type expression has you can just call the
             corresponding method.</p>
@@ -898,7 +898,7 @@ resolver.getTypeName("x.f2")=="Double"</pre>
         <p>It is anyway possible to eliminate type checks at evaluation
             time completely. There is a version of
             <code class="function">compile</code> method in
-            <code class="classname">gnu.jel.Evaluator</code>, which allows to fix
+            <code class="classname">jel.Evaluator</code>, which allows to fix
             the type of the result. It directs the compiler to perform the
             widening conversion to the given type, before returning the
             result. For example: if you fix the type to be <span class="type">int</span>
@@ -925,9 +925,9 @@ resolver.getTypeName("x.f2")=="Double"</pre>
             format. Starting with version 0.9 this feature was removed and now JEL
             generates ordinary Java class files.</p>
         <p>To store compiled expressions into a file just grab their code with
-            <code class="function">gnu.jel.Evaluator.compileBits</code>. The code is returned as a
+            <code class="function">jel.Evaluator.compileBits</code>. The code is returned as a
             byte array which is easy to save/restore. Then, the expression can be
-            instantiated using <code class="classname">gnu.jel.ImageLoader</code> with the code
+            instantiated using <code class="classname">jel.ImageLoader</code> with the code
         </p>
         <pre class="programlisting">byte[] image;
 // ... code to read the JEL-generated class file into the "image" ...

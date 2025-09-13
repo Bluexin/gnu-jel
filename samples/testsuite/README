@@ -15,7 +15,7 @@ of the library   (e.g. for a better diagnostics after jel.jar testing
 have failed), you will  need  to  specify the class path and the main 
 class manually like this:
 
-java -cp tests.jar:../../source/third-party/junit.jar:../../lib/jel_g.jar gnu.jel.JELTestSuite
+java -cp tests.jar:../../source/third-party/junit.jar:../../lib/jel_g.jar jel.JELTestSuite
 
 
 More tests in form of patches or wishes are always WELCOME !!!

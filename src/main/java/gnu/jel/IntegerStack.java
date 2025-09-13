@@ -20,8 +20,6 @@
 
 package gnu.jel;
 
-import gnu.jel.debug.Debug;
-
 /**
  * Specialized stack which works with integers.
  */

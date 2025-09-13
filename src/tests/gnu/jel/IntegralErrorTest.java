@@ -25,8 +25,6 @@ import junit.framework.TestCase;
 //import gnu.jel.generated.EC;
 //import gnu.jel.generated.ParseException;
 //import gnu.jel.generated.TokenMgrError;
-import java.io.PrintStream;
-import java.util.Stack;
 import gnu.jel.tests.VariableProvider;
 
 public class IntegralErrorTest  extends TestingUtils {

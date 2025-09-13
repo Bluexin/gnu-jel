@@ -21,16 +21,14 @@
 package gnu.jel;
 
 import gnu.jel.debug.Debug;
-import java.lang.reflect.Member;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Constructor;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Member;
+import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.Stack;
-import java.util.Vector;
 
 /**
  * This class represents a classfile image in JEL.

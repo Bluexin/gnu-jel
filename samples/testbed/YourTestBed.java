@@ -44,8 +44,8 @@ public class YourTestBed {
 	dotLib[1]=java.lang.String.class;
 	
 	// finally, the namespace is defined by constructing the library class
-	gnu.jel.Library lib=
-	    new gnu.jel.Library(stLib,dynLib,dotLib,resolver,null);
+	jel.Library lib=
+	    new jel.Library(stLib,dynLib,dotLib,resolver,null);
 
 
 	//**********************************************************
@@ -59,42 +59,42 @@ public class YourTestBed {
 
 	//**********************************************************
 	//******** We are ready to compile some expressions  *******
-	gnu.jel.CompiledExpression expr;
+	jel.CompiledExpression expr;
 
 	// constant expression
-	expr=gnu.jel.Evaluator.compile("2*2",lib);
+	expr= jel.Evaluator.compile("2*2",lib);
 	System.out.println("2*2="+expr.evaluate(context));
 
 	// expression accessing the variables
-	expr=gnu.jel.Evaluator.compile("x",lib);
+	expr= jel.Evaluator.compile("x",lib);
 	System.out.println("x="+expr.evaluate(context));
 
 	// three expressions accessing the variables with dot operator
-	expr=gnu.jel.Evaluator.compile("d1.value",lib);
+	expr= jel.Evaluator.compile("d1.value",lib);
 	System.out.println("d1.value="+expr.evaluate(context));
 	
 	//
-	expr=gnu.jel.Evaluator.compile("d2.value",lib);
+	expr= jel.Evaluator.compile("d2.value",lib);
 	System.out.println("d2.value="+expr.evaluate(context));
 
 	//
-	expr=gnu.jel.Evaluator.compile("(d1.value+d2.value)*x*10",lib);
+	expr= jel.Evaluator.compile("(d1.value+d2.value)*x*10",lib);
 	System.out.println("(d1.value+d2.value)*x*10="+expr.evaluate(context));
 
 	// also using static functions
-	expr=gnu.jel.Evaluator.compile("round((d1.value+d2.value)*x*10)",lib);
+	expr= jel.Evaluator.compile("round((d1.value+d2.value)*x*10)",lib);
 	System.out.println("round((d1.value+d2.value)*x*10)="+expr.evaluate(context));
 
 	// LET's try dynamic variables
 	// First, we add few _DYNAMICALLY_, this can (and intended to) be
-	// done after the gnu.jel.Library initialization
+	// done after the jel.Library initialization
 	resolver.addProperty("sDvar","str1");
 	resolver.addProperty("dataDvar",new Data(3));
 	
 	// now we can access them
-	expr=gnu.jel.Evaluator.compile("sDvar",lib);
+	expr= jel.Evaluator.compile("sDvar",lib);
 	System.out.println("sDvar="+expr.evaluate(context));
-	expr=gnu.jel.Evaluator.compile("dataDvar",lib);
+	expr= jel.Evaluator.compile("dataDvar",lib);
 	System.out.println("dataDvar="+expr.evaluate(context));
 	
 	// it is possible to have hierarchical name space
@@ -104,17 +104,17 @@ public class YourTestBed {
 	resolver.addProperty("sDvar.str","This is string");
 
 	// we can access these also
-	expr=gnu.jel.Evaluator.compile("sDvar.data1",lib);
+	expr= jel.Evaluator.compile("sDvar.data1",lib);
 	System.out.println("sDvar.data1="+expr.evaluate(context));
 
-	expr=gnu.jel.Evaluator.compile("sDvar.str",lib);
+	expr= jel.Evaluator.compile("sDvar.str",lib);
 	System.out.println("sDvar.str="+expr.evaluate(context));
 
-	expr=gnu.jel.Evaluator.compile("sDvar.data2",lib);
+	expr= jel.Evaluator.compile("sDvar.data2",lib);
 	System.out.println("sDvar.data2="+expr.evaluate(context));
 
 	// they are ready for calculations
-	expr=gnu.jel.Evaluator.compile("sDvar.data1+sDvar.data2+1",lib);
+	expr= jel.Evaluator.compile("sDvar.data1+sDvar.data2+1",lib);
 	System.out.println("sDvar.data1+sDvar.data2+1="+expr.evaluate(context));
 
 	// You can add more expressions here

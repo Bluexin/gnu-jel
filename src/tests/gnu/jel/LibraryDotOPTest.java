@@ -19,7 +19,7 @@
 */
 package gnu.jel;
 import junit.framework.TestCase;
-import java.io.StringReader;
+
 import java.lang.reflect.Member;
 
 public class LibraryDotOPTest extends TestCase {

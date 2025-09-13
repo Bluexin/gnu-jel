@@ -21,8 +21,6 @@
 package gnu.jel;
 
 import gnu.jel.tests.*;
-import java.io.PrintStream;
-import java.util.Stack;
 
 public class IntegralDotOperatorTest extends TestingUtils {
   public IntegralDotOperatorTest(String name) {

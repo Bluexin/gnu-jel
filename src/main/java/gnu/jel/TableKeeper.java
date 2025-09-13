@@ -24,6 +24,7 @@ import gnu.jel.debug.Debug;
 
 import java.io.ObjectInputStream;
 import java.util.Hashtable;
+import java.util.Objects;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
@@ -39,7 +40,7 @@ public class TableKeeper {
       Class<?> c = DVMap.class;
       // Read messages
       resB=
-              new PropertyResourceBundle(c.getResourceAsStream("/gnu/jel/JEL.properties"));
+              new PropertyResourceBundle(Objects.requireNonNull(c.getResourceAsStream("/gnu/jel/JEL.properties")));
 
       // Read tables
       ObjectInputStream ios=
@@ -79,6 +80,7 @@ public class TableKeeper {
         Debug.println("Exception when reading tables:");
         Debug.reportThrowable(exc);
       };
+        throw new RuntimeException("Failed to read tables", exc);
     };
     tables=temp;
     msgs=resB;

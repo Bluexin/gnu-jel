@@ -21,6 +21,7 @@
 package gnu.jel;
 
 import gnu.jel.debug.Debug;
+
 import java.lang.reflect.Member;
 
 /**

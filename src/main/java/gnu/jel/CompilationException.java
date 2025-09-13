@@ -20,7 +20,6 @@
 
 package gnu.jel;
 import gnu.jel.debug.Debug;
-import java.text.MessageFormat;
 
 /**
  * Represents an error encountered during the compilation.

@@ -20,9 +20,10 @@
 
 package gnu.jel;
 
-import gnu.jel.debug.*;
-import java.util.Stack;
+import gnu.jel.debug.Debug;
+
 import java.lang.reflect.Member;
+import java.util.Stack;
 
 public class Parser {
 

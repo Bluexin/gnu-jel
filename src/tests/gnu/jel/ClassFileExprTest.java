@@ -21,7 +21,6 @@
 package gnu.jel;
 import junit.framework.TestCase;
 import java.io.StringReader;
-import java.lang.reflect.Method;
 import java.lang.reflect.Member;
 import java.lang.reflect.Constructor;
 import java.util.Stack;

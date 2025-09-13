@@ -20,8 +20,6 @@
 
 package gnu.jel;
 
-import gnu.jel.debug.Debug;
-
 /**
  * Represents a method local to the class being compiled.
  */

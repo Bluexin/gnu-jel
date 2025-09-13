@@ -18,10 +18,10 @@
 *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import gnu.jel.Evaluator;
-import gnu.jel.CompiledExpression;
-import gnu.jel.Library;
 import gnu.jel.CompilationException;
+import gnu.jel.CompiledExpression;
+import gnu.jel.Evaluator;
+import gnu.jel.Library;
 
 public class Calculator {
  

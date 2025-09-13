@@ -18,7 +18,7 @@
 *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-public class Data implements gnu.jel.reflect.Double {
+public class Data implements jel.reflect.Double {
     public double value=10.0;
     public double squared_value() {
 	return value*value;
@@ -28,7 +28,7 @@ public class Data implements gnu.jel.reflect.Double {
 	this.value=value;
     };
 
-    // implements gnu.jel.reflect.Double interface
+    // implements jel.reflect.Double interface
     public double getValue() {
 	return value;
     };

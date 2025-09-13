@@ -21,8 +21,6 @@
 package gnu.jel;
 
 import gnu.jel.tests.*;
-import java.io.PrintStream;
-import java.util.Stack;
 
 public class IntegralExceptionsPassingTest extends TestingUtils {
   public IntegralExceptionsPassingTest(String name) {
