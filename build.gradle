@@ -7,6 +7,14 @@ plugins {
 group = 'be.bluexin.jel'
 version = jel_version
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 def generatedResourcesDir = layout.buildDirectory.dir("generated/resources")
 
 // TODO : assess if it's worth handling the gnu.jel.debug.* stuff
